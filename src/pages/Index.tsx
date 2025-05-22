@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Table } from '@/components/ui/table';
 import { IceCreamForm } from '@/components/IceCreamForm';
 import { IceCreamTable } from '@/components/IceCreamTable';
-import { SetupInstructions } from '@/components/SetupInstructions';
 import { toast } from '@/hooks/use-toast';
 
 // Define the IceCream interface
@@ -22,7 +21,6 @@ const API_URL = 'http://localhost:3001/api';
 const Index = () => {
   const [iceCreams, setIceCreams] = useState<IceCream[]>([]);
   const [selectedIceCream, setSelectedIceCream] = useState<IceCream | null>(null);
-  const [showInstructions, setShowInstructions] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -156,17 +154,6 @@ const Index = () => {
         <h1 className="text-3xl font-bold mb-2">Ice Cream Shop</h1>
         <p className="text-gray-600 mb-4">Manage your ice cream inventory</p>
       </header>
-
-      <div className="mb-4 text-center">
-        <button 
-          onClick={() => setShowInstructions(!showInstructions)} 
-          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition-colors mb-4"
-        >
-          {showInstructions ? 'Hide Setup Instructions' : 'Show Setup Instructions'}
-        </button>
-      </div>
-
-      {showInstructions && <SetupInstructions />}
 
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4">
